@@ -1,6 +1,6 @@
 
 
-POST http://localhost:3000/videos
+POST http://localhost:3333/videos
 Content-Type: application/json
 
 {

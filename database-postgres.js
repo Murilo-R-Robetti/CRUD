@@ -15,7 +15,7 @@ export class DatabasePostgres {
 
     return videos;
   }
-
+  
   async create(video) {
     const videoId = randomUUID();
     const { title, description, duration } = video;
