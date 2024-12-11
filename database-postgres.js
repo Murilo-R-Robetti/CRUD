@@ -2,34 +2,36 @@ import { randomUUID } from "node:crypto";
 import { sql } from "./db.js";
 
 export class DatabasePostgres {
+
+  
   async list(search) {
-    let videos;
+    let usuarios;
 
     if (search) {
-      videos = await sql`select * from videos where title ilike ${
+      usuarios = await sql`select * from usuarios where nome ilike ${
         "%" + search + "%"
       }`;
     } else {
-      videos = await sql`select * from videos`;
+      usuarios = await sql`select * from usuarios`;
     }
 
-    return videos;
-  }
-  
-  async create(video) {
-    const videoId = randomUUID();
-    const { title, description, duration } = video;
-
-    await sql`insert into videos (id, title, description, duration) VALUES (${videoId}, ${title}, ${description}, ${duration})`;
+    return usuarios;
   }
 
-  async update(id, video) {
-    const { title, description, duration } = video;
+  async create(usuario) {
+    const usuarioId = randomUUID();
+    const { nome, email, celular } = usuario;
 
-    await sql`update videos set title = ${title}, description = ${description}, duration = ${duration} WHERE id = ${id}`;
+    await sql`insert into usuarios (id, nome, email, celular) VALUES (${usuarioId}, ${nome}, ${email}, ${celular})`;
+  }
+
+  async update(id, usuario) {
+    const { nome, email, celular } = usuario;
+
+    await sql`update usuarios set nome = ${nome}, email = ${email}, celular = ${celular} WHERE id = ${id}`;
   }
 
   async delete(id) {
-    await sql`delete from videos where id = ${id}`;
+    await sql`delete from usuarios where id = ${id}`;
   }
 }
