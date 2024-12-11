@@ -27,15 +27,16 @@ await server.register(cors, {
 const database = new DatabasePostgres();
 
 // Rota para criar um novo usuário (POST)
-server.post("/usuarios", async (request, reply) => {
+server.post("/agendamentos", async (request, reply) => {
   // Desestrutura os dados do corpo da requisição
-  const { nome, email, celular } = request.body;
+  const { paciente, dentista, servico, datahora } = request.body;
 
   // Chama o método create do banco de dados para inserir um novo vídeo
   await database.create({
-    nome: nome,
-    email: email,
-    celular: celular,
+    paciente: paciente,
+    dentista: dentista,
+    servico: servico,
+    datahora: datahora
   });
 
   // Retorna uma resposta de sucesso com código 201 (Created)
@@ -43,30 +44,31 @@ server.post("/usuarios", async (request, reply) => {
 });
 
 // Rota para listar usuários (GET)
-server.get("/usuarios", async (request, reply) => {                                    
+server.get("/agendamentos", async (request, reply) => {                                    
   // Extrai o parâmetro de busca da query da URL
-  const { nome } = request.query
+  const { paciente } = request.query
   
   // Chama o método list do banco de dados, passando o termo de busca
-  const usuarios = await database.list(nome);
+  const agendamentos = await database.list(paciente);
 
-  reply.send(usuarios)
+  reply.send(agendamentos)
 
   
 });
 
 // Rota para atualizar um vídeo existente (PUT)
-server.put("/usuarios/:id", async (request, reply) => {
+server.put("/agendamentos/:id", async (request, reply) => {
   // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
-  const usuarioId = request.params.id;
+  const agendamentoId = request.params.id;
   // Desestrutura os novos dados do usuário do corpo da requisição
-  const { nome, email, celular } = request.body;
+  const { paciente, dentista, servico, datahora } = request.body;
 
   // Chama o método update do banco de dados
-  await database.update(usuarioId, {
-    nome,
-    email,
-    celular,
+  await database.update(agendamentoId, {
+    paciente,
+    dentista,
+    servico,
+    datahora
   });
 
   // Retorna uma resposta de sucesso sem conteúdo (204 No Content)
@@ -74,12 +76,12 @@ server.put("/usuarios/:id", async (request, reply) => {
 });
 
 // Rota para excluir um usuário (DELETE)
-server.delete("/usuarios/:id", async (request, reply) => {
+server.delete("/agendamentos/:id", async (request, reply) => {
   // Obtém o ID do vídeo a ser excluído a partir dos parâmetros da URL
-  const usuarioId = request.params.id;
+  const agendamentoId = request.params.id;
 
   // Chama o método delete do banco de dados
-  await database.delete(usuarioId);
+  await database.delete(agendamentoId);
   // Retorna uma resposta de sucesso sem conteúdo (204 No Content)
   return reply.status(204).send();
 });

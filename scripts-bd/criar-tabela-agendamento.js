@@ -6,7 +6,7 @@ async function criar(){
   
   try {
     await sql`
-      DROP TABLE IF EXISTS usuarios;
+      DROP TABLE IF EXISTS agendamentos;
     ` 
     console.log("Tabela apagada")
   } catch (error) {
@@ -16,21 +16,21 @@ async function criar(){
   
   try {
     await sql`
-      CREATE TABLE usuarios (
+      CREATE TABLE agendamentos (
         id      VARCHAR(50)  PRIMARY KEY,     
-        nome    VARCHAR(100), 
-        email   VARCHAR(150), 
-        celular VARCHAR(15)  
+        paciente   VARCHAR(100), 
+        dentista   VARCHAR(100),
+        servico    VARCHAR(100), 
+        datahora   VARCHAR(50) 
       );
-    ` 
+    `;
+
     console.log("Tabela criada")
   } catch (error) {
     console.log(error)
     
   }
   
-
-
 }
 
 

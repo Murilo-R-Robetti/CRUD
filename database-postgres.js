@@ -5,33 +5,33 @@ export class DatabasePostgres {
 
   
   async list(search) {
-    let usuarios;
+    let agendamentos;
 
     if (search) {
-      usuarios = await sql`select * from usuarios where nome ilike ${
+      agendamentos = await sql`select * from agendamentos where paciente ilike ${
         "%" + search + "%"
       }`;
     } else {
-      usuarios = await sql`select * from usuarios`;
+      agendamentos = await sql`select * from agendamentos`;
     }
 
-    return usuarios;
+    return agendamentos;
   }
 
-  async create(usuario) {
-    const usuarioId = randomUUID();
-    const { nome, email, celular } = usuario;
+  async create(agendamento) {
+    const agendamentoId = randomUUID();
+    const { paciente, dentista, servico, datahora } = agendamento;
 
-    await sql`insert into usuarios (id, nome, email, celular) VALUES (${usuarioId}, ${nome}, ${email}, ${celular})`;
+    await sql`insert into agendamentos (id, paciente, dentista, servico, datahora) VALUES (${agendamentoId}, ${paciente}, ${dentista}, ${servico}, ${datahora})`;
   }
 
-  async update(id, usuario) {
-    const { nome, email, celular } = usuario;
+  async update(id, agendamento) {
+    const { paciente, dentista, servico, datahora } = agendamento;
 
-    await sql`update usuarios set nome = ${nome}, email = ${email}, celular = ${celular} WHERE id = ${id}`;
+    await sql`update agendamentos set paciente = ${paciente}, dentista = ${dentista}, servico = ${servico}, datahora = ${datahora} WHERE id = ${id}`;
   }
 
   async delete(id) {
-    await sql`delete from usuarios where id = ${id}`;
+    await sql`delete from agendamentos where id = ${id}`;
   }
 }

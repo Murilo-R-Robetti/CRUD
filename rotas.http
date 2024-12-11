@@ -1,45 +1,48 @@
 
 
-POST http://localhost:3333/usuarios
+POST http://localhost:3333/agendamentos
 Content-type: application/json
 
 {
-  "nome": "João da Silva",
-  "email": "joaodasilva@gmail.com",
-  "celular": "44 91234-1234"
+  "paciente": "João da Silva",
+  "dentista": "José Almeida",
+  "servico": "consulta",
+  "datahora": "13:50-14:40"
 }
 
 ###
 
-POST http://localhost:3333/usuarios
+POST http://localhost:3333/agendamentos
 Content-type: application/json
 
 {
-  "nome": "Maria Freitas",
-  "email": "mariafreitas@gmail.com",
-  "celular": "44 94321-4321"
+  "paciente": "Maria da Silva",
+  "dentista": "Ana Almeida",
+  "servico": "consulta",
+  "datahora": "15:50-17:40"
 }
 
 ###
 
-GET http://localhost:3333/usuarios
+GET http://localhost:3333/agendamentos
 
 ###
 
-GET http://localhost:3333/usuarios?nome=joão
+GET http://localhost:3333/agendamentos?paciente=joão
 
 ###
 
-PUT http://localhost:3333/usuarios/b8093df3-d630-429c-acb4-36b6ee74c560
+PUT http://localhost:3333/agendamentos/b8093df3-d630-429c-acb4-36b6ee74c560
 Content-type: application/json
 Accept-Language: pt
 
 {
-  "nome": "João da Silva",
-  "email": "joaodasilva2@gmail.com",
-  "celular": "44 91234-1234"
+ "paciente": "João da Silva",
+  "dentista": "José Almeida",
+  "servico": "consulta",
+  "datahora": "13:50-14:40"
 }
 
 ###
 
-DELETE http://localhost:3333/usuarios/5d4838c4-1119-40df-9bd4-e1fc5eae59d5
+DELETE http://localhost:3333/agendamentos/5d4838c4-1119-40df-9bd4-e1fc5eae59d5
