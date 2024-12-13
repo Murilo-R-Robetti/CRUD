@@ -1,7 +1,5 @@
 import { sql } from "../db.js"
 
-
-
 async function criar(){
   
   try {
@@ -32,6 +30,5 @@ async function criar(){
   }
   
 }
-
 
 criar()
