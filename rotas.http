@@ -16,7 +16,7 @@ POST http://localhost:3333/agendamentos
 Content-type: application/json
 
 {
-  "paciente": "Maria da Silva",
+  "paciente": "Denise",
   "dentista": "Ana Almeida",
   "servico": "consulta",
   "datahora": "15:50-17:40"
