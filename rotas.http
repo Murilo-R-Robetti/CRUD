@@ -28,10 +28,6 @@ GET http://localhost:3333/agendamentos
 
 ###
 
-GET http://localhost:3333/agendamentos?paciente=joão
-
-###
-
 PUT http://localhost:3333/agendamentos/b8093df3-d630-429c-acb4-36b6ee74c560
 Content-type: application/json
 Accept-Language: pt
@@ -45,4 +41,14 @@ Accept-Language: pt
 
 ###
 
-DELETE http://localhost:3333/agendamentos/5d4838c4-1119-40df-9bd4-e1fc5eae59d5
+DELETE http://localhost:3333/agendamentos/45dbcca8-cbe7-4258-ae5b-f1d5e8d4dc50
+###
+DELETE http://localhost:3333/agendamentos/96ee5452-a55c-433b-b586-149fd131d57a
+###
+DELETE http://localhost:3333/agendamentos/6eb7d6dc-856f-4a5c-93fd-3905212f4c2e
+###
+DELETE http://localhost:3333/agendamentos/a9887c63-4879-4f36-a256-59859a66eb5b
+###
+DELETE http://localhost:3333/agendamentos/1892e0e5-e180-498f-8578-9ae07d39df7e
+###
+DELETE http://localhost:3333/agendamentos/18a51c8b-4ba3-4684-9b89-a9f056e7bfe8
